@@ -18,5 +18,31 @@ class controlTester(unittest.TestCase):
         casoResultado = stringEmpty.encript(caso)
         self.assertEqual(casoResultado, "")
         
-               
+    def testEncriptStringUpper(self):
+        stringUpper = clsAccessControl()
+        caso8 = "ABCDEFGH"
+        caso16 = "ABCDEFGHIJKLMNOP"
+        casoResultado8 = stringUpper.encript(caso8)
+        casoResultado16 = stringUpper.encript(caso16)
+        self.assertFalse(casoResultado8, None)
+        self.assertFalse(casoResultado16, None)
+        
+    def testEncriptStringLongEight(self):
+        stringLongEight = clsAccessControl()
+        caso8 = "JHGF.45j"
+        casoResultado8 = stringLongEight.encript(caso8)
+        self.assertTrue(casoResultado8)
+        
+    def testEncriptStringLongSixteen(self):
+        stringLongSixteen = clsAccessControl()
+        caso16 = "&/&hgbGTDK98()k."
+        casoResultado16 = stringLongSixteen.encript(caso16)
+        self.assertTrue(casoResultado16)
+        
+    
+        
+        
+        
+        
+        
         
