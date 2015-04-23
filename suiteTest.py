@@ -7,7 +7,6 @@ Created on 22/04/2015
 
 '''
 
-
 import unittest
 from mdlaccesscontrol import clsAccessControl
 
