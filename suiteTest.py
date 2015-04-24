@@ -12,6 +12,21 @@ from mdlaccesscontrol import clsAccessControl
 
 class controlTester(unittest.TestCase):
     
+    # Casos Validos
+    def testEncriptStringValid1(self):
+        stringValid1 = clsAccessControl()
+        caso = 'Josema#996'
+        casoResultado = stringValid1.encript(caso)
+        self.assertTrue(casoResultado)
+
+    def testEncriptStringValid2(self):
+        stringValid2 = clsAccessControl()
+        caso = 'Oskcolorado.21'
+        casoResultado = stringValid2.encript(caso)
+        self.assertTrue(casoResultado)
+    # ........................................
+    
+    # Casos Malicia
     def testEncriptStringEmpty(self):
         stringEmpty = clsAccessControl()
         caso = ""
@@ -37,7 +52,7 @@ class controlTester(unittest.TestCase):
         stringLongSixteen = clsAccessControl()
         caso16 = "&/&hgbGTDK98()k."
         casoResultado16 = stringLongSixteen.encript(caso16)
-        self.assertTrue(casoResultado16)
+        self.assertEqual(casoResultado16, "")
     
     def testEncriptStringChar(self):
         stringChar = clsAccessControl()
@@ -56,7 +71,7 @@ class controlTester(unittest.TestCase):
         casoResultado16 = stringNumeric.encript(caso16)
         self.assertFalse(casoResultado8, None)
         self.assertFalse(casoResultado16, None)    
-        self.assertTrue(casoResultado16)
+        self.assertEqual(casoResultado16, "")
         
     def testEncriptStringGreaterSixteen(self):
         stringGreater = clsAccessControl()
@@ -78,18 +93,16 @@ class controlTester(unittest.TestCase):
         caso = "A.t2"
         casoResultado = stringLess.encript(caso)
         self.assertEqual(casoResultado, "")
-    
-    '''    
+       
     def testEncriptStringWithoutChar(self):
         StringWithoutChar = clsAccessControl()
         caso = "At2sAd65scd75"
         casoResultado = StringWithoutChar.encript(caso)
         self.assertEqual(casoResultado, "")    
-    '''
-    '''    
+  
     def testEncriptStringWithoutNumber(self):
         StringWithoutNumber = clsAccessControl()
         caso = "Atssadd=scd,#"
         casoResultado = StringWithoutNumber.encript(caso)
-        self.assertEqual(casoResultado, "")   
-    '''   
+        self.assertEqual(casoResultado, "")
+    # ........................................   
