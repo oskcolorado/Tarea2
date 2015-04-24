@@ -64,9 +64,4 @@ class controlTester(unittest.TestCase):
         casoResultado8 = stringLower.encript(caso8)
         casoResultado16 = stringLower.encript(caso16)
         self.assertFalse(casoResultado8, None)
-        self.assertFalse(casoResultado16, None)    
-        
-        
-        
-        
-        
+        self.assertFalse(casoResultado16, None)   

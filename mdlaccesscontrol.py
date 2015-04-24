@@ -16,7 +16,12 @@ class clsAccessControl(object):
         # Verificar la longitud del password
         oHash=""
         olength_password=self.length_password(value)
-        if re.match("(?=^.{8,16}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$", value):
+        if re.match('(([0-9a-zA-Z]|[@.#$+*])*[A-Z]([0-9a-zA-Z]|[@.#$+*])*\d([0-9a-zA-Z]|[@.#$+*])*[@.#$+*])|'
+                           '(([0-9a-zA-Z]|[@.#$+*])*[A-Z]([0-9a-zA-Z]|[@.#$+*])*[@.#$+*]([0-9a-zA-Z]|[@.#$+*])*\d)|'
+                           '(([0-9a-zA-Z]|[@.#$+*])*\d([0-9a-zA-Z]|[@.#$+*])*[@.#$+*]([0-9a-zA-Z]|[@.#$+*])*[A-Z])|'
+                           '(([0-9a-zA-Z]|[@.#$+*])*\d([0-9a-zA-Z]|[@.#$+*])*[A-Z]([0-9a-zA-Z]|[@.#$+*])*[@.#$+*])|'
+                           '(([0-9a-zA-Z]|[@.#$+*])*[@.#$+*]([0-9a-zA-Z]|[@.#$+*])*\d([0-9a-zA-Z]|[@.#$+*])*[A-Z])|'
+                           '(([0-9a-zA-Z]|[@.#$+*])*[@.#$+*]([0-9a-zA-Z]|[@.#$+*])*[A-Z]([0-9a-zA-Z]|[@.#$+*])*\d)', value):
             # uuid es usado para generar numeros random
             salt = uuid.uuid4().hex
             # hash
@@ -40,7 +45,7 @@ class clsAccessControl(object):
         # uuid es usado para generar numeros random
         return len(user_password)
 
-
+'''
 #Para encriptar un passwork  
 oPassword = input('Por favor ingrese su password: ')
 #Se crea un objeto tipo clsAccessControl
@@ -54,3 +59,4 @@ if oPassworkEncript:
         print('Ha introducido el password correcto')
     else:
         print('El password es diferente')
+'''
