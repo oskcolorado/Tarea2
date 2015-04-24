@@ -39,10 +39,28 @@ class controlTester(unittest.TestCase):
         casoResultado16 = stringLongSixteen.encript(caso16)
         self.assertTrue(casoResultado16)
         
-    
+    def testEncriptStringGreaterSixteen(self):
+        stringGreater = clsAccessControl()
+        caso = "JSCHBBS47KSC:;)(&GBSCLKBSC"
+        casoResultado = stringGreater.encript(caso)
+        self.assertEqual(casoResultado, "")
         
-        
-        
-        
-        
-        
+    def testEncriptStringLeesEight(self):
+        stringLess = clsAccessControl()
+        caso = "A.t2"
+        casoResultado = stringLess.encript(caso)
+        self.assertEqual(casoResultado, "")
+    '''    
+    def testEncriptStringWithoutChar(self):
+        StringWithoutChar = clsAccessControl()
+        caso = "At2sAd65scd75"
+        casoResultado = StringWithoutChar.encript(caso)
+        self.assertEqual(casoResultado, "")    
+    '''
+    '''    
+    def testEncriptStringWithoutNumber(self):
+        StringWithoutNumber = clsAccessControl()
+        caso = "Atssadd=scd,#"
+        casoResultado = StringWithoutNumber.encript(caso)
+        self.assertEqual(casoResultado, "")   
+    '''    
