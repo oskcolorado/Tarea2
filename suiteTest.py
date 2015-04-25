@@ -6,12 +6,11 @@ Created on 22/04/2015
 @author: Jose Barrientos 10-10800
 
 '''
-
 import unittest
 from mdlaccesscontrol import clsAccessControl
 
 class controlTester(unittest.TestCase):
-
+    
     def testEncriptStringValid1(self):
         stringValid1 = clsAccessControl()
         caso = 'Josema#996'
@@ -92,7 +91,7 @@ class controlTester(unittest.TestCase):
     # Casos Esquina----------------------------------------
     def testEncriptStringLongSeven(self):
         stringLongSeven = clsAccessControl()
-        caso7 = "HgF.45J"
+        caso7 = "HGF.45J"
         casoResultado7 = stringLongSeven.encript(caso7)
         self.assertFalse(casoResultado7,"")
         
@@ -101,10 +100,22 @@ class controlTester(unittest.TestCase):
         caso17 = "#@+HGB.GTDK98**k."
         casoResultado17 = stringLongSeventeen.encript(caso17)
         self.assertFalse(casoResultado17)
-       
+    
+    def testEncriptStringWithoutChar(self):
+        stringWithoutChar = clsAccessControl()
+        caso = "AT2SAD65SCD75"
+        casoResultado = stringWithoutChar.encript(caso)
+        self.assertEqual(casoResultado, "")    
+    
+    def testEncriptStringWithoutNumber(self):
+        stringWithoutNumber = clsAccessControl()
+        caso = "ATSSA*DDSCE,#"
+        casoResultado = stringWithoutNumber.encript(caso)
+        self.assertEqual(casoResultado, "")
             
     def testEncriptStringWithoutLetter(self):
         stringWithoutLetter = clsAccessControl()
         caso = "76254*123*#,#"
         casoResultado = stringWithoutLetter.encript(caso)
         self.assertEqual(casoResultado, "")
+    #------------------------------------------------------
