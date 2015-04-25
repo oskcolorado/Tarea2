@@ -16,7 +16,8 @@ class controlTester(unittest.TestCase):
         StringWithoutChar = clsAccessControl()
         caso = "At2sAd65scd75"
         casoResultado = StringWithoutChar.encript(caso)
-        self.assertEqual(casoResultado, "")    
+        self.assertEqual(casoResultado, "")  
+        print ("Hola mundo")  
   
     def testEncriptStringWithoutNumber(self):
         StringWithoutNumber = clsAccessControl()
