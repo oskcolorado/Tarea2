@@ -12,20 +12,24 @@ from mdlaccesscontrol import clsAccessControl
 
 class cTesterCheckPasword(unittest.TestCase):
     
-    # Caso cadena de 7 caracteres
-    def testStringSevenTenn(self):
+    # Casos Esquina .............................
+    
+    # Caso cadena de 17 caracteres
+    def testStringSevenTeen(self):
         sevenTeenString = clsAccessControl()
         caso17 = "U.i4J#l2P@k8N+b0t"
         casoResultado = sevenTeenString.check_password("", caso17)
         self.assertFalse(casoResultado)
     
-    # Caso cadena de 17 caracteres    
+    # Caso cadena de 7 caracteres    
     def testStringSeven(self):
         sevenString = clsAccessControl()
         caso7 = "MG.#ne4"
         casoResultado = sevenString.check_password("", caso7)
         self.assertFalse(casoResultado)
-       
+        
+    # Csaos Frontera  ......................
+    
     # Caso cadena valida de 8 caracteres
     def testStringEightValid(self):
         eightValidString = clsAccessControl()
@@ -42,6 +46,8 @@ class cTesterCheckPasword(unittest.TestCase):
         casoResultado = sixteenValidString.check_password(casoTrue, caso16)
         self.assertTrue(casoResultado)
   
+    # Casos Malicia ............................
+    
     # Caso cadena de 8 caracteres vacios
     def testStringEightSpace(self):
         spaceString = clsAccessControl()
