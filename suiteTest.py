@@ -12,7 +12,7 @@ from mdlaccesscontrol import clsAccessControl
 
 class controlTester(unittest.TestCase):
     
-    # Casos Validos
+    # Casos Validos 
     def testEncriptStringValid1(self):
         stringValid1 = clsAccessControl()
         caso = 'Josema#996'
