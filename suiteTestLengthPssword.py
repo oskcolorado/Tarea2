@@ -14,7 +14,7 @@ from mdlaccesscontrol import clsAccessControl
 class cTesterLengthPassword(unittest.TestCase):
 
     # Caso Valido--------------------------------------------
-    def ctestLengthStringValid(self):
+    def testLengthStringValid(self):
         sizeStringValid = clsAccessControl()
         caso = 'JOS1E*M*A1'
         casoResultado = sizeStringValid.length_password(caso)
@@ -22,53 +22,60 @@ class cTesterLengthPassword(unittest.TestCase):
     #-------------------------------------------------------
 
     # Caso Malicia------------------------------------------
-    def ctestLengthStringEmpty(self):
+    def testLengthStringEmpty(self):
         sizeStringEmpty = clsAccessControl()
         caso = ""
         casoResultado = sizeStringEmpty.length_password(caso)
         self.assertFalse(casoResultado)
-        
-    def ctestLengthStringGreatest(self):
+      
+    def testLengthStringGreatest(self):
         sizeStringGreatest = clsAccessControl()
-        caso = "a * ((2**32)-1)"
-        casoResultado = sizeStringGreatest.legth_password(caso)
-        self.asserFalse(casoResultado,"Cadena demasiado grande")
+        caso = 'a'*((2**28)-1)
+        casoResultado = sizeStringGreatest.length_password(caso)
+        self.assertEqual(casoResultado, (2**28) - 1, "Cadena demasiado grande")
+    
+        
+    def testStringInterSpace(self):
+        stringInterSpace = clsAccessControl()
+        caso = 'Celtics #23'
+        casoResultado = stringInterSpace.length_password(caso)
+        self.assertEqual(casoResultado, 11)
     #---------------------------------------------------------
 
     # Caso Frontera-------------------------------------------
-    def ctestLengthStringEight(self):
+    def testLengthStringEight(self):
         sizeStringEight = clsAccessControl()
         caso8 = "LUIS.*12"
         casoResultado = sizeStringEight.length_password(caso8)
-        self.assertFalse(casoResultado)
+        self.assertTrue(casoResultado)
         
-    def ctestLengthStringSixteen(self):
+    def testLengthStringSixteen(self):
         sizeStringSixteen = clsAccessControl()
         caso16 = "LUIS.*12JO*SE$MA"
         casoResultado = sizeStringSixteen.length_password(caso16)
-        self.assertFalse(casoResultado)
+        self.assertTrue(casoResultado)
         
     # Caso Esquina----------------------------------------       
-    def ctestLengthStringSeven(self):
+    def testLengthStringSeven(self):
         sizeStringSeven = clsAccessControl()
         caso7 = "LUIS.*1"
         casoResultado = sizeStringSeven.length_password(caso7)
-        self.assertFalse(casoResultado)
+        self.assertTrue(casoResultado)
 
-    def ctestLengthStringNine(self):
+    def testLengthStringNine(self):
         sizeStringNine = clsAccessControl()
         caso9 = "S.*12JOA$"
         casoResultado = sizeStringNine.length_password(caso9)
-        self.assertFalse(casoResultado)
+        self.assertTrue(casoResultado)
 
-    def ctestLengthStringFitteen(self):
+    def testLengthStringFifteen(self):
         sizeStringFifteen = clsAccessControl()
         caso15 = "LUIS.*1JO*SE$MA1"
         casoResultado = sizeStringFifteen.length_password(caso15)
-        self.assertFalse(casoResultado)
+        self.assertTrue(casoResultado)
 
-    def ctestLengthStringSeventeen(self):
+    def testLengthStringSeventeen(self):
         sizeStringSeventeen = clsAccessControl()
         caso17 = "LUI1S.*12JO*SE$MA"
         casoResultado = sizeStringSeventeen.length_password(caso17)
-        self.assertFalse(casoResultado)
+        self.assertTrue(casoResultado)
