@@ -11,6 +11,7 @@ from mdlaccesscontrol import clsAccessControl
 
 class controlTester(unittest.TestCase):
     
+    # Casos validos----------------------------------------
     def testEncriptStringValid1(self):
         stringValid1 = clsAccessControl()
         caso = 'Josema#996'
@@ -31,7 +32,7 @@ class controlTester(unittest.TestCase):
         casoResultado = stringEmpty.encript(caso)
         self.assertEqual(casoResultado, "")
 
-    def testEncriptStringWithEmpty(self):
+    def testEncriptStringWithSpace(self):
         stringWithEmpty = clsAccessControl()
         caso = "CYT 123*OWH"
         casoResultado = stringWithEmpty.encript(caso)
@@ -118,4 +119,35 @@ class controlTester(unittest.TestCase):
         caso = "76254*123*#,#"
         casoResultado = stringWithoutLetter.encript(caso)
         self.assertEqual(casoResultado, "")
+        
+    def testEncriptStringNumberUpper(self):
+        stringNumberUpper = clsAccessControl()
+        caso = "12345MJGDT"
+        casoResultado = stringNumberUpper.encript(caso)
+        self.assertEqual(casoResultado, "")
+        
+    def testEncriptStringNumberSlow(self):
+        stringNumberSlow = clsAccessControl()
+        caso = "12345njsf"
+        casoResultado = stringNumberSlow.encript(caso)
+        self.assertEqual(casoResultado, "")
+        
+    def testEncriptStringNumberChar(self):
+        stringNumberChar = clsAccessControl()
+        caso = "12345.*+#"
+        casoResultado = stringNumberChar.encript(caso)
+        self.assertEqual(casoResultado, "")
+        
+    def testEncriptStringUpperChar(self):
+        stringUpperChar = clsAccessControl()
+        caso = "MJDH.*+#"
+        casoResultado = stringUpperChar.encript(caso)
+        self.assertEqual(casoResultado, "")
+        
+    def testEncriptStringSlowChar(self):
+        stringSlowChar = clsAccessControl()
+        caso = "mdsfg.*+#"
+        casoResultado = stringSlowChar.encript(caso)
+        self.assertEqual(casoResultado, "")
+
     #------------------------------------------------------
