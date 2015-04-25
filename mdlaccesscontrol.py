@@ -42,10 +42,14 @@ class clsAccessControl(object):
     def check_password(self, oPassworkEncript, oCheckPassword):
         # Verificar la longitud del password
         olength_password=self.length_password(oCheckPassword)
-        if olength_password>=8 and olength_password<=16: 
-            # uuid es usado para generar numeros random
-            oPassworkEncript, salt = oPassworkEncript.split(':')
-            return oPassworkEncript == hashlib.sha256(salt.encode() + oCheckPassword.encode()).hexdigest()
+        if olength_password>=8 and olength_password<=16 and oPassworkEncript != None:
+            tmp = re.search(self.rePass, oCheckPassword)
+            if (tmp):
+                 
+                # uuid es usado para generar numeros random
+                oPassworkEncript, salt = oPassworkEncript.split(':')
+                if (oPassworkEncript == hashlib.sha256(salt.encode() + oCheckPassword.encode()).hexdigest()):
+                    return True
         else:
             print('El Password no posee la cantidad de caracteres requerida')
             return False
