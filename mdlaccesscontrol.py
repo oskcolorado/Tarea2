@@ -10,34 +10,25 @@ import re
  
 class clsAccessControl(object):
     def __init__(self):
-        
-        self.rePass = ('(([0-9a-zA-Z]|[@.#$+*])*[A-Z]([0-9a-zA-Z]|[@.#$+*])*\d([0-9a-zA-Z]|[@.#$+*])*[@.#$+*])|'
-                           '(([0-9a-zA-Z]|[@.#$+*])*[A-Z]([0-9a-zA-Z]|[@.#$+*])*[@.#$+*]([0-9a-zA-Z]|[@.#$+*])*\d)|'
-                           '(([0-9a-zA-Z]|[@.#$+*])*\d([0-9a-zA-Z]|[@.#$+*])*[@.#$+*]([0-9a-zA-Z]|[@.#$+*])*[A-Z])|'
-                           '(([0-9a-zA-Z]|[@.#$+*])*\d([0-9a-zA-Z]|[@.#$+*])*[A-Z]([0-9a-zA-Z]|[@.#$+*])*[@.#$+*])|'
-                           '(([0-9a-zA-Z]|[@.#$+*])*[@.#$+*]([0-9a-zA-Z]|[@.#$+*])*\d([0-9a-zA-Z]|[@.#$+*])*[A-Z])|'
-                           '(([0-9a-zA-Z]|[@.#$+*])*[@.#$+*]([0-9a-zA-Z]|[@.#$+*])*[A-Z]([0-9a-zA-Z]|[@.#$+*])*\d)'
-                           )
-        
         ohast=''
         
     def encript(self, value):
         # Verificar la longitud del password
         oHash=""
         olength_password=self.length_password(value)
-        if olength_password>=8 and olength_password<=16:
-            tmp = re.search(self.rePass, value)
+        if re.match('(([0-9a-zA-Z]|[@.#$+*])*[A-Z]([0-9a-zA-Z]|[@.#$+*])*\d([0-9a-zA-Z]|[@.#$+*])*[@.#$+*])|'
+                    '(([0-9a-zA-Z]|[@.#$+*])*[A-Z]([0-9a-zA-Z]|[@.#$+*])*[@.#$+*]([0-9a-zA-Z]|[@.#$+*])*\d)|'
+                    '(([0-9a-zA-Z]|[@.#$+*])*\d([0-9a-zA-Z]|[@.#$+*])*[@.#$+*]([0-9a-zA-Z]|[@.#$+*])*[A-Z])|'
+                    '(([0-9a-zA-Z]|[@.#$+*])*\d([0-9a-zA-Z]|[@.#$+*])*[A-Z]([0-9a-zA-Z]|[@.#$+*])*[@.#$+*])|'
+                    '(([0-9a-zA-Z]|[@.#$+*])*[@.#$+*]([0-9a-zA-Z]|[@.#$+*])*\d([0-9a-zA-Z]|[@.#$+*])*[A-Z])|'
+                    '(([0-9a-zA-Z]|[@.#$+*])*[@.#$+*]([0-9a-zA-Z]|[@.#$+*])*[A-Z]([0-9a-zA-Z]|[@.#$+*])*\d)', value) and olength_password>=8 and olength_password<=16:
             # uuid es usado para generar numeros random
-            if tmp:
-                salt = uuid.uuid4().hex
-                # hash
-                oHash= hashlib.sha256(salt.encode() + value.encode()).hexdigest() + ':' + salt
-                return oHash
-            else:
-                return oHash
+            salt = uuid.uuid4().hex
+            # hash
+            oHash= hashlib.sha256(salt.encode() + value.encode()).hexdigest() + ':' + salt
         else:
             print('El Password debe contener entre 8 y 16 caracteres')
-        return oHash   
+        return oHash 
     
     def check_password(self, oPassworkEncript, oCheckPassword):
         # Verificar la longitud del password
