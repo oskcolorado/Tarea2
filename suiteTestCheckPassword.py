@@ -25,7 +25,7 @@ class cTesterCheckPasword(unittest.TestCase):
         caso7 = "MG.#ne4"
         casoResultado = sevenString.check_password("", caso7)
         self.assertFalse(casoResultado)
-    '''    
+       
     # Caso cadena valida de 8 caracteres
     def testStringEightValid(self):
         eightValidString = clsAccessControl()
@@ -33,7 +33,7 @@ class cTesterCheckPasword(unittest.TestCase):
         casoTrue = eightValidString.encript(caso8)
         casoResultado = eightValidString.check_password(casoTrue, caso8)
         self.assertTrue(casoResultado)
-    
+ 
     # Caso cadena valida de 16 caracteres    
     def testStringSixteenValid(self):
         sixteenValidString = clsAccessControl()
@@ -48,5 +48,5 @@ class cTesterCheckPasword(unittest.TestCase):
         caso = "        "
         casoResultado = spaceString.check_password("", caso)
         self.assertFalse(casoResultado)
-    '''
+
     
