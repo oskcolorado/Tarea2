@@ -9,7 +9,6 @@ Created on 24/04/2015
 
 import unittest
 from mdlaccesscontrol import clsAccessControl
-#from test.test_keyword import NONEXISTENT_FILE
 
 class cTesterCheckPasword(unittest.TestCase):
     

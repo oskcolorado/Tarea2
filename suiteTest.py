@@ -11,22 +11,6 @@ import unittest
 from mdlaccesscontrol import clsAccessControl
 
 class controlTester(unittest.TestCase):
-   
-    def testEncriptStringWithoutChar(self):
-        StringWithoutChar = clsAccessControl()
-        caso = "At2sAd65scd75"
-        casoResultado = StringWithoutChar.encript(caso)
-        self.assertEqual(casoResultado, "")  
-  
-    def testEncriptStringWithoutNumber(self):
-        StringWithoutNumber = clsAccessControl()
-        caso = "Atssadd=scd,#"
-        casoResultado = StringWithoutNumber.encript(caso)
-        self.assertEqual(casoResultado, "")
-    # ........................................   
-
-
-    # Casos Validos----------------------------------------
 
     def testEncriptStringValid1(self):
         stringValid1 = clsAccessControl()
