@@ -90,13 +90,15 @@ class lTesterCheckPasword(unittest.TestCase):
         caso = "        "
         casoResultado = spaceString.check_password("", caso)
         self.assertFalse(casoResultado)
-
+    
+    # Cadena vacia
     def testStringEmpty(self):
         stringEmpty = clsAccessControl()
         caso = ''
         casoResultado = stringEmpty.check_password('', caso)
         self.assertFalse(casoResultado)
-      
+    
+    # Cadena valida de 14 caracteres y una cadena invalida de 14 caracteres    
     def testStringValidInvalid14(self):
         validInvalidString = clsAccessControl()
         caso = "#mcjubs86*gTK."
@@ -105,4 +107,40 @@ class lTesterCheckPasword(unittest.TestCase):
         casoResultado = validInvalidString.check_password(casoTrue, caso)
         self.assertFalse(casoResultado)
     
+    # Cadena invalida de 8 caracteres y una cadena valida de 8 caracteres  
+    def testStringInvalidValid8(self):
+        invalidValidString = clsAccessControl()
+        caso = "12345678"
+        aux = "1Tr45#e."
+        casoTrue = invalidValidString.encript(aux)
+        casoResultado = invalidValidString.check_password(casoTrue, caso)
+        self.assertFalse(casoResultado)
+    
+    # Cadena invalida de 16 caracteres y una cadena valida de 16 caracteres    
+    def testStringInvalidValid16(self):
+        invalidValidString = clsAccessControl()
+        caso = "1234567890asdfgl"
+        aux = "Tr45#e..*+#kdcSD"
+        casoTrue = invalidValidString.encript(aux)
+        casoResultado = invalidValidString.check_password(casoTrue, caso)
+        self.assertFalse(casoResultado)
+    
+    # Cadena invalida de 8 caracteres y una cadena invalida de 8 caracteres    
+    def testStringInvalidInvalid8(self):
+        invalidInvalidString = clsAccessControl()
+        caso = "12345678"
+        aux = "tr45#e.."
+        casoTrue = invalidInvalidString.encript(aux)
+        casoResultado = invalidInvalidString.check_password(casoTrue, caso)
+        self.assertFalse(casoResultado)
+            
+    # Cadena invalida de 16 caracteres y una cadena invalida de 16 caracteres    
+    def testStringInvalidInvalid16(self):
+        invalidInvalidString = clsAccessControl()
+        caso = "1234567890asdfgl"
+        aux = "tr45#e..*+#kdcsd"
+        casoTrue = invalidInvalidString.encript(aux)
+        casoResultado = invalidInvalidString.check_password(casoTrue, caso)
+        self.assertFalse(casoResultado)
+                
     
