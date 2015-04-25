@@ -10,7 +10,7 @@ Created on 24/04/2015
 import unittest
 from mdlaccesscontrol import clsAccessControl
 
-class cTesterCheckPasword(unittest.TestCase):
+class lTesterCheckPasword(unittest.TestCase):
     
     # Casos Esquina .............................
     
@@ -37,6 +37,24 @@ class cTesterCheckPasword(unittest.TestCase):
         casoTrue = eightValidString.encript(caso8)
         casoResultado = eightValidString.check_password(casoTrue, caso8)
         self.assertTrue(casoResultado)
+        
+    # Caso cadena valida de 8 caracteres y cadena valida de 8 caracteres distinta
+    def testStringEightValidValid(self):
+        eightValidValidString = clsAccessControl()
+        caso8 = "lMan4n4."
+        aux = "Luis.21x"
+        casoTrue = eightValidValidString.encript(aux)
+        casoResultado = eightValidValidString.check_password(casoTrue, caso8)
+        self.assertFalse(casoResultado)
+    
+    # Caso cadena valida de 8 caracteres y cadena invalidade 8 caracteres
+    def testStringEightValidInvalid(self):
+        eightValidInvalidString = clsAccessControl()
+        caso8 = "lMan4n4."
+        aux = "L4l4."
+        casoTrue = eightValidInvalidString.encript(aux)
+        casoResultado = eightValidInvalidString.check_password(casoTrue, caso8)
+        self.assertFalse(casoResultado)
  
     # Caso cadena valida de 16 caracteres    
     def testStringSixteenValid(self):
@@ -45,6 +63,24 @@ class cTesterCheckPasword(unittest.TestCase):
         casoTrue = sixteenValidString.encript(caso16)
         casoResultado = sixteenValidString.check_password(casoTrue, caso16)
         self.assertTrue(casoResultado)
+        
+    # Caso cadena valida de 16 caracteres    
+    def testStringSixteenValidValid(self):
+        sixteenValidValidString = clsAccessControl()
+        caso16 = "#mcjubJBs86*gTK."
+        aux = "#mc45bJBs86*gTK."
+        casoTrue = sixteenValidValidString.encript(aux)
+        casoResultado = sixteenValidValidString.check_password(casoTrue, caso16)
+        self.assertFalse(casoResultado)
+        
+    # Caso cadena valida de 8 caracteres y cadena invalidade 8 caracteres
+    def testStringSixteenValidInvalid(self):
+        sixteenValidInvalidString = clsAccessControl()
+        caso8 = "ynsaciHGSD*+.213"
+        aux = "L4l4."
+        casoTrue = sixteenValidInvalidString.encript(aux)
+        casoResultado = sixteenValidInvalidString.check_password(casoTrue, caso8)
+        self.assertFalse(casoResultado)
   
     # Casos Malicia ............................
     
@@ -55,4 +91,18 @@ class cTesterCheckPasword(unittest.TestCase):
         casoResultado = spaceString.check_password("", caso)
         self.assertFalse(casoResultado)
 
+    def testStringEmpty(self):
+        stringEmpty = clsAccessControl()
+        caso = ''
+        casoResultado = stringEmpty.check_password('', caso)
+        self.assertFalse(casoResultado)
+      
+    def testStringValidInvalid14(self):
+        validInvalidString = clsAccessControl()
+        caso = "#mcjubs86*gTK."
+        aux = "#mcjuBs86*gTK."
+        casoTrue = validInvalidString.encript(aux)
+        casoResultado = validInvalidString.check_password(casoTrue, caso)
+        self.assertFalse(casoResultado)
+    
     
