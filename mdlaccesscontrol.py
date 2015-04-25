@@ -28,7 +28,7 @@ class clsAccessControl(object):
             oHash= hashlib.sha256(salt.encode() + value.encode()).hexdigest() + ':' + salt
         else:
             print('El Password debe contener entre 8 y 16 caracteres')
-        return oHash   
+        return oHash 
     
     def check_password(self, oPassworkEncript, oCheckPassword):
         # Verificar la longitud del password
