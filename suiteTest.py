@@ -47,7 +47,7 @@ class controlTester(unittest.TestCase):
         casoResultado16 = stringUpper.encript(caso16)
         self.assertFalse(casoResultado8, None)
         self.assertFalse(casoResultado16, None)
-
+        
     def testEncriptStringLower(self):
         stringLower = clsAccessControl()
         caso8 = "abcdefgh"
@@ -120,4 +120,3 @@ class controlTester(unittest.TestCase):
         caso = "76254*123*#,#"
         casoResultado = stringWithoutLetter.encript(caso)
         self.assertEqual(casoResultado, "")
-    
