@@ -18,7 +18,7 @@ class controlTester(unittest.TestCase):
         caso = 'Josema#996'
         casoResultado = stringValid1.encript(caso)
         self.assertTrue(casoResultado)
-
+    
     def testEncriptStringValid2(self):
         stringValid2 = clsAccessControl()
         caso = 'Oskcolorado.21'
@@ -65,7 +65,7 @@ class controlTester(unittest.TestCase):
         casoResultado16 = stringNumeric.encript(caso16)
         self.assertFalse(casoResultado8, None)
         self.assertFalse(casoResultado16, None)    
-
+    
     def testEncriptStringChar(self):
         stringChar = clsAccessControl()
         caso8 = "@*+.$+$#"
@@ -75,7 +75,7 @@ class controlTester(unittest.TestCase):
         self.assertFalse(casoResultado8, None)
         self.assertFalse(casoResultado16, None)      
     #-------------------------------------------------------
-    
+  
     # Casos Frontera----------------------------------------
     def testEncriptStringLongEight(self):
         stringLongEight = clsAccessControl()
@@ -114,7 +114,7 @@ class controlTester(unittest.TestCase):
         caso = "ATSSA*DDSCE,#"
         casoResultado = stringWithoutNumber.encript(caso)
         self.assertEqual(casoResultado, "")
-    
+            
     def testEncriptStringWithoutLetter(self):
         stringWithoutLetter = clsAccessControl()
         caso = "76254*123*#,#"
