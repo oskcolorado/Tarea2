@@ -11,11 +11,33 @@ from mdlaccesscontrol import clsAccessControl
 
 class controlTester(unittest.TestCase):
 
+    # Casos Validos----------------------------------------
+
+    def testEncriptStringValid1(self):
+        stringValid1 = clsAccessControl()
+        caso = 'Josema#996'
+        casoResultado = stringValid1.encript(caso)
+        self.assertTrue(casoResultado)
+
+    def testEncriptStringValid2(self):
+        stringValid2 = clsAccessControl()
+        caso = 'Oskcolorado.21'
+        casoResultado = stringValid2.encript(caso)
+        self.assertTrue(casoResultado)
+    #------------------------------------------------------
+
+    # Casos Malicia----------------------------------------
     def testEncriptStringEmpty(self):
         stringEmpty = clsAccessControl()
         caso = ""
         casoResultado = stringEmpty.encript(caso)
         self.assertEqual(casoResultado, "")
+
+    def testEncriptStringWithEmpty(self):
+        stringWithEmpty = clsAccessControl()
+        caso = "CYT 123*OWH"
+        casoResultado = stringWithEmpty.encript(caso)
+        self.assertFalse(casoResultado,"No puede haber espacios en blanco")
         
     def testEncriptStringUpper(self):
         stringUpper = clsAccessControl()
@@ -43,7 +65,6 @@ class controlTester(unittest.TestCase):
         casoResultado16 = stringNumeric.encript(caso16)
         self.assertFalse(casoResultado8, None)
         self.assertFalse(casoResultado16, None)    
-        self.assertTrue(casoResultado16)
 
     def testEncriptStringChar(self):
         stringChar = clsAccessControl()
@@ -53,61 +74,50 @@ class controlTester(unittest.TestCase):
         casoResultado16 = stringChar.encript(caso16)
         self.assertFalse(casoResultado8, None)
         self.assertFalse(casoResultado16, None)      
+    #-------------------------------------------------------
     
+    # Casos Frontera----------------------------------------
     def testEncriptStringLongEight(self):
         stringLongEight = clsAccessControl()
-        caso8 = "JHGF.45j"
+        caso8 = "JHGF.45J"
         casoResultado8 = stringLongEight.encript(caso8)
         self.assertTrue(casoResultado8)
-        
+     
     def testEncriptStringLongSixteen(self):
         stringLongSixteen = clsAccessControl()
-        caso16 = "#@+HGBGTDK98**k."
+        caso16 = "#@+HGBGTDK98**K."
         casoResultado16 = stringLongSixteen.encript(caso16)
         self.assertTrue(casoResultado16)
-
-    def testEncriptStringLongsSeven(self):
+    #------------------------------------------------------
+    
+    # Casos Esquina----------------------------------------
+    def testEncriptStringLongSeven(self):
         stringLongSeven = clsAccessControl()
-        caso7 = "HGF.45j"
+        caso7 = "HGF.45J"
         casoResultado7 = stringLongSeven.encript(caso7)
-        self.assertFalse(casoResultado7)
+        self.assertFalse(casoResultado7,"")
         
     def testEncriptStringLongSeventeen(self):
         stringLongSeventeen = clsAccessControl()
         caso17 = "#@+HGB.GTDK98**k."
-        casoResultado17 = stringLongSeventeen.encript(caso16)
+        casoResultado17 = stringLongSeventeen.encript(caso17)
         self.assertFalse(casoResultado17)
-
-    '''            
-    def testEncriptStringGreaterSixteen(self):
-        stringGreater = clsAccessControl()
-        caso = "JSCHBBS47KSC:;)(&GBSCLKBSC"
-        casoResultado = stringGreater.encript(caso)
-        self.assertEqual(casoResultado, "")
     
     def testEncriptStringWithoutChar(self):
-        StringWithoutChar = clsAccessControl()
-        caso = "At2sAd65scd75"
-        casoResultado = StringWithoutChar.encript(caso)
-        self.assertEqual(casoResultado, "")
-            
+        stringWithoutChar = clsAccessControl()
+        caso = "AT2SAD65SCD75"
+        casoResultado = stringWithoutChar.encript(caso)
+        self.assertEqual(casoResultado, "")    
+    
     def testEncriptStringWithoutNumber(self):
-        StringWithoutNumber = clsAccessControl()
-        caso = "Atssadd=scd,#"
-        casoResultado = StringWithoutNumber.encript(caso)
+        stringWithoutNumber = clsAccessControl()
+        caso = "ATSSA*DDSCE,#"
+        casoResultado = stringWithoutNumber.encript(caso)
         self.assertEqual(casoResultado, "")
-        casoResultado16 = stringLongSixteen.encript(caso16)
-        self.assertTrue(casoResultado16)
-
-    def testEncriptStringGreaterSixteen(self):
-        stringGreater = clsAccessControl()
-        caso = "JSCHBBS47KSC:;)(&GBSCLKBSC"
-        casoResultado = stringGreater.encript(caso)
+    
+    def testEncriptStringWithoutLetter(self):
+        stringWithoutLetter = clsAccessControl()
+        caso = "76254*123*#,#"
+        casoResultado = stringWithoutLetter.encript(caso)
         self.assertEqual(casoResultado, "")
-               
-    def testEncriptStringLeesEight(self):
-        stringLess = clsAccessControl()
-        caso = "A.t2"
-        casoResultado = stringLess.encript(caso)
-        self.assertEqual(casoResultado, "")
-    '''    
+    
