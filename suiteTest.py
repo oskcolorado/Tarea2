@@ -10,9 +10,7 @@ import unittest
 from mdlaccesscontrol import clsAccessControl
 
 class controlTester(unittest.TestCase):
-
-    # Casos Validos----------------------------------------
-
+    
     def testEncriptStringValid1(self):
         stringValid1 = clsAccessControl()
         caso = 'Josema#996'
@@ -120,3 +118,4 @@ class controlTester(unittest.TestCase):
         caso = "76254*123*#,#"
         casoResultado = stringWithoutLetter.encript(caso)
         self.assertEqual(casoResultado, "")
+    #------------------------------------------------------
