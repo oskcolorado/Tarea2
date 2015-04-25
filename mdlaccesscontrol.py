@@ -7,7 +7,7 @@ Created on 24/9/2014
 import uuid
 import hashlib
 import re
- 
+
 class clsAccessControl(object):
     def __init__(self):
         ohast=''
